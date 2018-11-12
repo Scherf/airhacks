@@ -2,6 +2,10 @@
 package com.airhacks.ping.boundary;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.faulttolerance.Fallback;
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 /**
  *
@@ -10,10 +14,22 @@ import javax.ejb.Stateless;
 @Stateless
 public class ZnueniService {
 
+    @Inject
+    @ConfigProperty(name = "message", defaultValue = "not configured")
+    String message;
+
+    @Fallback(fallbackMethod = "veggy")
+    @Retry(maxRetries = 2)
     public String message() {
-        throw new IllegalStateException("today is 21");
+        System.out.println(".");
+        throw new NoWurstException("today is 21");
         //return "42";
     }
+
+    public String veggy() {
+        return "green stuff " + this.message;
+    }
+
 
 
 }
