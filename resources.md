@@ -13,6 +13,8 @@ https://openliberty.io
 http://javaeemicro.services/
 http://airhacks.com 
 
+Heavyweight vs. lightweight (an attendee's question about server's footprint): http://www.adam-bien.com/roller/abien/entry/java_ee_heavyweight_or_lightweight
+
 Java EE + MicroProfile server support: https://github.com/AdamBien/microprofile-jakartaee-matrix
 
 
