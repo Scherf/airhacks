@@ -18,10 +18,14 @@ public class ZnueniService {
     @ConfigProperty(name = "message", defaultValue = "not configured")
     String message;
 
+    @Inject
+    WurstMetric metric;
+
     @Fallback(fallbackMethod = "veggy")
     @Retry(maxRetries = 2)
     public String message() {
         System.out.println(".");
+        this.metric.nextWurst();
         throw new NoWurstException("today is 21");
         //return "42";
     }
